@@ -12,6 +12,10 @@ class CleanController: UIViewController {
     
     var mapView = RotaMapView()
     
+    func bundleFile(_ file: NSString) -> NSString {
+        return Bundle.main.path(forResource: file.deletingPathExtension, ofType: file.pathExtension)! as NSString
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,11 @@ class CleanController: UIViewController {
         mapView.center = view.center
         
         do {
+            
+            let fileName = bundleFile("data")
+            let dataArr = NSArray(contentsOfFile: fileName as String)
+            
+            print(dataArr?.count)
             
             let mapJson = [
                 ["Header":
