@@ -12,6 +12,10 @@
 		6F6F87A11FE7BA33005A0DBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F879F1FE7BA33005A0DBC /* Main.storyboard */; };
 		6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */; };
 		6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A41FE7BA33005A0DBC /* LaunchScreen.storyboard */; };
+		6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */; };
+		6F6F87B01FE7D2E8005A0DBC /* data in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87AF1FE7D2E8005A0DBC /* data */; };
+		6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */; };
+		6F6F87B41FE8BDE4005A0DBC /* RotaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6F87A51FE7BA33005A0DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F6F87A71FE7BA33005A0DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
+		6F6F87AF1FE7D2E8005A0DBC /* data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data; sourceTree = "<group>"; };
+		6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotaMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +62,12 @@
 		6F6F879A1FE7BA33005A0DBC /* OpenGLStudy */ = {
 			isa = PBXGroup;
 			children = (
+				6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */,
+				6F6F87AF1FE7D2E8005A0DBC /* data */,
 				6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */,
 				6F6F879D1FE7BA33005A0DBC /* ViewController.swift */,
+				6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */,
+				6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */,
 				6F6F879F1FE7BA33005A0DBC /* Main.storyboard */,
 				6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */,
 				6F6F87A41FE7BA33005A0DBC /* LaunchScreen.storyboard */,
@@ -125,6 +137,7 @@
 			files = (
 				6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */,
 				6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */,
+				6F6F87B01FE7D2E8005A0DBC /* data in Resources */,
 				6F6F87A11FE7BA33005A0DBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,8 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */,
 				6F6F879E1FE7BA33005A0DBC /* ViewController.swift in Sources */,
+				6F6F87B41FE8BDE4005A0DBC /* RotaMapView.swift in Sources */,
 				6F6F879C1FE7BA33005A0DBC /* AppDelegate.swift in Sources */,
+				6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
