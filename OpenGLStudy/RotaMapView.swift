@@ -14,7 +14,7 @@ class RotaMapView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //把背景色设为透明
+
         backgroundColor = .cyan
     }
     
