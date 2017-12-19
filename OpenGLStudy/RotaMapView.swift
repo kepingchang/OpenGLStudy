@@ -27,7 +27,7 @@ class RotaMapView: UIView {
         for i in 0..<dataArr.count {
             for j in 0..<dataArr[i].count {
                 if dataArr[i][j] > 0 {
-                    CGContext.addRect(context!)(CGRect(x: i, y: j, width: 1, height: 1))
+                    CGContext.addRect(context!)(CGRect(x: j, y: i, width: 1, height: 1))
                 }
             }
         }
