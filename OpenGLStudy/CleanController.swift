@@ -12,24 +12,18 @@ class CleanController: UIViewController {
     
     var mapView = RotaMapView()
     
-    func bundleFile(_ file: NSString) -> NSString {
-        return Bundle.main.path(forResource: file.deletingPathExtension, ofType: file.pathExtension)! as NSString
-    }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(mapView)
         mapView.center = view.center
         
+        let fileName = Bundle.main.path(forResource: "data", ofType: "plist")
+        let dataArr = NSArray(contentsOfFile: fileName!)
+        print(dataArr?.count)
+        
         do {
-            
-            let fileName = bundleFile("data")
-            let dataArr = NSArray(contentsOfFile: fileName as String)
-            
-            print(dataArr?.count)
-            
             let mapJson = [
                 ["Header":
                     [

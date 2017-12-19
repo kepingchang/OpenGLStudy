@@ -13,9 +13,12 @@
 		6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */; };
 		6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A41FE7BA33005A0DBC /* LaunchScreen.storyboard */; };
 		6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */; };
-		6F6F87B01FE7D2E8005A0DBC /* data in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87AF1FE7D2E8005A0DBC /* data */; };
+		6F6F87B01FE7D2E8005A0DBC /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87AF1FE7D2E8005A0DBC /* data.json */; };
 		6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */; };
 		6F6F87B41FE8BDE4005A0DBC /* RotaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */; };
+		EF37A8871FE91E9100CF4BBF /* datatest.json in Resources */ = {isa = PBXBuildFile; fileRef = EF37A8861FE91E9100CF4BBF /* datatest.json */; };
+		EF37A8891FE9205100CF4BBF /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF37A8881FE9205100CF4BBF /* data.plist */; };
+		EF37A88B1FE9209300CF4BBF /* datatest.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF37A88A1FE9209200CF4BBF /* datatest.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +30,12 @@
 		6F6F87A51FE7BA33005A0DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F6F87A71FE7BA33005A0DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
-		6F6F87AF1FE7D2E8005A0DBC /* data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data; sourceTree = "<group>"; };
+		6F6F87AF1FE7D2E8005A0DBC /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotaMapView.swift; sourceTree = "<group>"; };
+		EF37A8861FE91E9100CF4BBF /* datatest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = datatest.json; sourceTree = "<group>"; };
+		EF37A8881FE9205100CF4BBF /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		EF37A88A1FE9209200CF4BBF /* datatest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = datatest.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */,
-				6F6F87AF1FE7D2E8005A0DBC /* data */,
+				EF37A8881FE9205100CF4BBF /* data.plist */,
+				EF37A88A1FE9209200CF4BBF /* datatest.plist */,
+				6F6F87AF1FE7D2E8005A0DBC /* data.json */,
+				EF37A8861FE91E9100CF4BBF /* datatest.json */,
 				6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */,
 				6F6F879D1FE7BA33005A0DBC /* CleanController.swift */,
 				6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */,
@@ -135,9 +144,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF37A8891FE9205100CF4BBF /* data.plist in Resources */,
 				6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */,
 				6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */,
-				6F6F87B01FE7D2E8005A0DBC /* data in Resources */,
+				6F6F87B01FE7D2E8005A0DBC /* data.json in Resources */,
+				EF37A88B1FE9209300CF4BBF /* datatest.plist in Resources */,
+				EF37A8871FE91E9100CF4BBF /* datatest.json in Resources */,
 				6F6F87A11FE7BA33005A0DBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
