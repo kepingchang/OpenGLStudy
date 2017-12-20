@@ -11,6 +11,8 @@ import UIKit
 class CleanController: UIViewController {
     
     var mapView = RotaMapView()
+    var traceView = RotaTraceView()
+
     
     var drawnum = 0
     
@@ -21,34 +23,16 @@ class CleanController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(mapView)
+        view.addSubview(traceView)
+
         mapView.center = view.center
+        traceView.center = view.center
+
         
         let fileName = Bundle.main.path(forResource: "data", ofType: "plist")
         let dataArr = NSArray(contentsOfFile: fileName!) as! [[String: Any]]
 
-        
         do {
-//            let mapJson = [
-//                ["Header":
-//                    [
-//                        "Seq":0,
-//                        "Stamp":1513595809298993608,
-//                        "FrameID":"map"
-//                    ],
-//                 "Info":[
-//                    "MapLoadTime":1513595809298993608,
-//                    "Resolution":0.05,
-//                    "Width":34,
-//                    "Height":34,
-//                    "Origin":
-//                        [
-//                            "Position":["X":-1.05,"Y":-1.05,"Z":0],
-//                            "Orientation":["X":0,"Y":0,"Z":0,"W":1]
-//                    ]],
-//                 "DataLength":1156,
-//                 "Data":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,75,75,75,52,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,75,55,4,4,4,4,75,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,43,4,4,4,4,4,4,4,4,4,10,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,52,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,74,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,52,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,43,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,75,-1,-1,-1,-1,-1,-1,52,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,75,37,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,73,75,-1,-1,-1,-1,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,73,75,-1,-1,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,75,15,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,75,74,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,-1,75,75,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,74,75,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,26,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,55,75,75,4,4,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,4,4,4,4,4,4,4,4,4,4,4,4,75,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,75,21,4,4,4,4,4,4,65,75,75,64,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,75,75,75,75,75,75,75,75,61,-1,-1,-1,-1,-1,-1,-1,-1]
-//                ] as [String : Any]
-//            ]
             
             let data = try JSONSerialization.data(withJSONObject: dataArr, options: .prettyPrinted)
             json = JSON(data: data)
@@ -58,7 +42,7 @@ class CleanController: UIViewController {
         }
     }
     
-    func drawMap(drawnum: Int) {
+    private func drawMap(drawnum: Int) {
         
         let width = json[drawnum]["Map"]["Info"]["Width"]
         let height = json[drawnum]["Map"]["Info"]["Height"]
@@ -66,31 +50,33 @@ class CleanController: UIViewController {
         mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         
         //draw point
-        print("\(json[drawnum]["Map"]["Data"].arrayValue)")
+        print("\(json[drawnum]["Map"]["Data"].arrayValue.count)")
         
-        let oldArr = json[drawnum]["Map"]["Data"].arrayValue
-
         
-//        var newArr = Array(repeating:Array(repeating:Int(), count:width.intValue), count:height.intValue)
-//
-//
-//        for i in 0..<height.intValue {
-//            for j in 0..<width.intValue {
-//                newArr[i][j] = oldArr[i*json[drawnum]["Map"]["Info"]["Width"].intValue + j].intValue
-//            }
-//        }
-//
-//        print("newArr:\(newArr)")
-        
-        mapView.dataArr = oldArr
+        mapView.dataArr = json[drawnum]["Map"]["Data"].arrayValue
         mapView.setNeedsDisplay()
     }
+    
+    
+    private func drawTrace(drawnum: Int) {
+        
+        let width = json[drawnum]["Map"]["Info"]["Width"]
+        let height = json[drawnum]["Map"]["Info"]["Height"]
+        
+        traceView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        
+        
+        traceView.dataArr = json[drawnum]["Trace"].arrayValue
+        traceView.setNeedsDisplay()
+    }
+    
     
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if drawnum < json.count {
             drawMap(drawnum: drawnum)
+            drawTrace(drawnum: drawnum)
             drawnum += 1
         }else {
             drawnum = 0
