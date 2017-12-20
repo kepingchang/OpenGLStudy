@@ -56,17 +56,38 @@ class RotaTraceView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        if dataArr.count == 0 {
+            return
+        }
         let context = UIGraphicsGetCurrentContext()
-
-        
         let bezier = UIBezierPath()
         
-        for i in 0..<dataArr.count {
-            let x = dataArr[i]["X"].floatValue
-            let y = dataArr[i]["Y"].floatValue
-            print(CGPoint(x: CGFloat(x), y: CGFloat(y)))
-            UIBezierPath.move(bezier)(to: CGPoint(x: CGFloat(x), y: CGFloat(y)))
+        let testDataArray = [
+            ["X":20,"Y":30],
+            ["X":30,"Y":40],
+            ["X":50,"Y":80],
+            ["X":100,"Y":200]
+        ]
+
+        for i in 0..<testDataArray.count-1  {
+
+            let firstPoint = CGPoint(x: CGFloat(testDataArray[i]["X"]!), y: CGFloat(testDataArray[i]["X"]!))
+            let secondPoint = CGPoint(x: CGFloat(testDataArray[i+1]["X"]!), y: CGFloat(testDataArray[i+1]["X"]!))
+
+            bezier.move(to: firstPoint)
+            bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
         }
+        
+
+//        for i in 0..<dataArr.count-1 {
+//            let firstPoint = CGPoint(x: 20.0*CGFloat(dataArr[i]["X"].floatValue), y: 20.0*CGFloat(dataArr[i]["Y"].floatValue))
+//            let secondPoint = CGPoint(x: 20.0*CGFloat(dataArr[i+1]["X"].floatValue), y: 20.0*CGFloat(dataArr[i+1]["Y"].floatValue))
+//
+//            print("\(firstPoint)\(secondPoint)")
+//
+//            bezier.move(to: firstPoint)
+//            bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
+//        }
 
         
         UIColor.red.setStroke()

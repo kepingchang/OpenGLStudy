@@ -49,6 +49,7 @@ class CleanController: UIViewController {
 
         mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         
+        
         //draw point
         print("\(json[drawnum]["Map"]["Data"].arrayValue.count)")
         
