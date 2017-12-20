@@ -12,26 +12,26 @@ class CleanController: UIViewController {
     
     var mapView = RotaMapView()
     var traceView = RotaTraceView()
-
+    
     
     var drawnum = 0
     
     var json = JSON()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(mapView)
         view.addSubview(traceView)
-
-        mapView.center = view.center
-        traceView.center = view.center
-
+        
+                mapView.center = view.center
+        //        traceView.center = view.center
+        
         
         let fileName = Bundle.main.path(forResource: "data", ofType: "plist")
         let dataArr = NSArray(contentsOfFile: fileName!) as! [[String: Any]]
-
+        
         do {
             
             let data = try JSONSerialization.data(withJSONObject: dataArr, options: .prettyPrinted)
@@ -46,9 +46,16 @@ class CleanController: UIViewController {
         
         let width = json[drawnum]["Map"]["Info"]["Width"]
         let height = json[drawnum]["Map"]["Info"]["Height"]
-
-        mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         
+        if drawnum == 0 {
+            mapView.center = view.center
+            mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }else {
+            mapView.frame = CGRect(x: mapView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: mapView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }
+        
+        
+        print(mapView.frame)
         
         //draw point
         print("\(json[drawnum]["Map"]["Data"].arrayValue.count)")
