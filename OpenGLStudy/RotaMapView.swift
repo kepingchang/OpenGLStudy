@@ -45,6 +45,10 @@ class RotaTraceView: UIView {
     
     var dataArr = Array<JSON>()
     
+    var positionX: CGFloat = 0
+    var positionY: CGFloat = 0
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -62,33 +66,28 @@ class RotaTraceView: UIView {
         let context = UIGraphicsGetCurrentContext()
         let bezier = UIBezierPath()
         
-        let testDataArray = [
-            ["X":20,"Y":30],
-            ["X":30,"Y":40],
-            ["X":50,"Y":80],
-            ["X":100,"Y":200]
-        ]
-
-        for i in 0..<testDataArray.count-1  {
-
-            let firstPoint = CGPoint(x: CGFloat(testDataArray[i]["X"]!), y: CGFloat(testDataArray[i]["X"]!))
-            let secondPoint = CGPoint(x: CGFloat(testDataArray[i+1]["X"]!), y: CGFloat(testDataArray[i+1]["X"]!))
-
-            bezier.move(to: firstPoint)
-            bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
-        }
         
+        let startx = self.bounds.width + positionX
+        let starty = self.bounds.height + positionY
+        
+        bezier.move(to: CGPoint(x: startx, y: starty))
+        
+        print(CGPoint(x: startx, y: starty))
+        
+        for i in 0..<dataArr.count-1 {
+            if i != 0 {
+                bezier.addLine(to: CGPoint(x: startx + 20*CGFloat(dataArr[i]["X"].floatValue), y: starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))
+                
+                print(CGPoint(x: startx + 20*CGFloat(dataArr[i]["X"].floatValue), y: starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))
+            }
+        }
 
-//        for i in 0..<dataArr.count-1 {
-//            let firstPoint = CGPoint(x: 20.0*CGFloat(dataArr[i]["X"].floatValue), y: 20.0*CGFloat(dataArr[i]["Y"].floatValue))
-//            let secondPoint = CGPoint(x: 20.0*CGFloat(dataArr[i+1]["X"].floatValue), y: 20.0*CGFloat(dataArr[i+1]["Y"].floatValue))
+        // 绘制曲线
+//        print("\(firstPoint)\(secondPoint)")
 //
-//            print("\(firstPoint)\(secondPoint)")
-//
-//            bezier.move(to: firstPoint)
-//            bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
-//        }
-
+//        bezier.move(to: firstPoint)
+//        bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
+        
         
         UIColor.red.setStroke()
         CGContext.setLineWidth(context!)(5)

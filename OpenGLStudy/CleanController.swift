@@ -71,10 +71,18 @@ class CleanController: UIViewController {
         let width = json[drawnum]["Map"]["Info"]["Width"]
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
-        traceView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         
+        if drawnum == 0 {
+            traceView.center = view.center
+            traceView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }else {
+            traceView.frame = CGRect(x: traceView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: traceView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }
         
         traceView.dataArr = json[drawnum]["Trace"].arrayValue
+        traceView.positionX = 20*CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)
+        traceView.positionY = 20*CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)
+        
         traceView.setNeedsDisplay()
     }
     
