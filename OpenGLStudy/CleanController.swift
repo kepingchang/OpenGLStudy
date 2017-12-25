@@ -11,22 +11,35 @@ import UIKit
 class CleanController: UIViewController {
     
     var mapView = RotaMapView()
+    var hinderView = RotaHinderView()
     var traceView = RotaTraceView()
     
     
     var drawnum = 0
     
     var json = JSON()
+    var timer = Timer()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(mapView)
+        view.addSubview(hinderView)
         view.addSubview(traceView)
         
-                mapView.center = view.center
-        //        traceView.center = view.center
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            if self.drawnum < self.json.count {
+                self.drawMap(drawnum: self.drawnum)
+                self.drawHinder(drawnum: self.drawnum)
+                self.drawTrace(drawnum: self.drawnum)
+                self.drawnum += 1
+            }else {
+                self.drawnum = 0
+            }
+        })
+        self.timer.fire()
         
         
         let fileName = Bundle.main.path(forResource: "data", ofType: "plist")
@@ -60,9 +73,35 @@ class CleanController: UIViewController {
         //draw point
         print("\(json[drawnum]["Map"]["Data"].arrayValue.count)")
         
-        
         mapView.dataArr = json[drawnum]["Map"]["Data"].arrayValue
         mapView.setNeedsDisplay()
+
+        
+        print(mapView.frame)
+
+    }
+    
+    
+    private func drawHinder(drawnum: Int) {
+        
+        let width = json[drawnum]["Map"]["Info"]["Width"]
+        let height = json[drawnum]["Map"]["Info"]["Height"]
+        
+        if drawnum == 0 {
+            hinderView.center = view.center
+            hinderView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }else {
+            hinderView.frame = CGRect(x: hinderView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: hinderView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
+        }
+        
+        print(hinderView.frame)
+        
+        //draw point
+        print("\(json[drawnum]["Map"]["Data"].arrayValue.count)")
+        
+        hinderView.dataArr = json[drawnum]["Map"]["Data"].arrayValue
+        hinderView.setNeedsDisplay()
+        
     }
     
     
@@ -92,6 +131,7 @@ class CleanController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if drawnum < json.count {
             drawMap(drawnum: drawnum)
+            drawHinder(drawnum: drawnum)
             drawTrace(drawnum: drawnum)
             drawnum += 1
         }else {

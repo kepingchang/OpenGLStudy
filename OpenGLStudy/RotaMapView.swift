@@ -15,7 +15,7 @@ class RotaMapView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .cyan
+        backgroundColor = UIColor(hexString: "#ebecf1")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,11 +30,45 @@ class RotaMapView: UIView {
         
         for i in 0..<height {
             for j in 0..<width {
-                if dataArr[i*width + j].intValue > 0 {
+                if dataArr[i*width + j].intValue > 0 && dataArr[i*width + j].intValue <= 70 {
                     CGContext.addRect(context!)(CGRect(x: j, y: i, width: 1, height: 1))
                 }
             }
         }
+        context!.setStrokeColor(UIColor(hexString: "#10d5a1").withAlphaComponent(0.4).cgColor)
+        CGContext.strokePath(context!)()
+    }
+}
+
+
+class RotaHinderView: UIView {
+    
+    var dataArr = Array<JSON>()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        
+        let width = Int(bounds.width)
+        let height = Int(bounds.height)
+        
+        for i in 0..<height {
+            for j in 0..<width {
+                if dataArr[i*width + j].intValue > 70 {
+                    CGContext.addRect(context!)(CGRect(x: j, y: i, width: 1, height: 1))
+                }
+            }
+        }
+        context!.setStrokeColor(UIColor(hexString: "#60dbb5").cgColor)
         CGContext.strokePath(context!)()
     }
 }
@@ -67,8 +101,8 @@ class RotaTraceView: UIView {
         let bezier = UIBezierPath()
         
         
-        let startx = self.bounds.width + positionX
-        let starty = self.bounds.height + positionY
+        let startx = -positionX
+        let starty = -positionY
         
         bezier.move(to: CGPoint(x: startx, y: starty))
         
@@ -89,11 +123,20 @@ class RotaTraceView: UIView {
 //        bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
         
         
-        UIColor.red.setStroke()
-        CGContext.setLineWidth(context!)(5)
+        UIColor(hexString: "#66c5fo").setStroke()
+        CGContext.setLineWidth(context!)(2)
         CGContext.addPath(context!)(bezier.cgPath)
         CGContext.drawPath(context!)(using: .stroke)
 
     }
     
 }
+
+public  func randomColor () ->UIColor {
+    //  产生随机的色值
+    let red = arc4random() % 256
+    let green = arc4random() % 256
+    let blue = arc4random() % 256
+    return UIColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
+}
+
