@@ -13,11 +13,9 @@
 		6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */; };
 		6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A41FE7BA33005A0DBC /* LaunchScreen.storyboard */; };
 		6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */; };
-		6F6F87B01FE7D2E8005A0DBC /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87AF1FE7D2E8005A0DBC /* data.json */; };
 		6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */; };
 		6F6F87B41FE8BDE4005A0DBC /* RotaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */; };
 		6F8B11961FF0CD4A0032E1EB /* UIColor+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */; };
-		6F8B11981FF0EF870032E1EB /* map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6F8B11971FF0EF870032E1EB /* map.txt */; };
 		EF37A8891FE9205100CF4BBF /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF37A8881FE9205100CF4BBF /* data.plist */; };
 /* End PBXBuildFile section */
 
@@ -30,11 +28,9 @@
 		6F6F87A51FE7BA33005A0DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F6F87A71FE7BA33005A0DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
-		6F6F87AF1FE7D2E8005A0DBC /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotaMapView.swift; sourceTree = "<group>"; };
 		6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hexa.swift"; sourceTree = "<group>"; };
-		6F8B11971FF0EF870032E1EB /* map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map.txt; sourceTree = "<group>"; };
 		EF37A8881FE9205100CF4BBF /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,8 +67,6 @@
 				6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */,
 				6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */,
 				EF37A8881FE9205100CF4BBF /* data.plist */,
-				6F6F87AF1FE7D2E8005A0DBC /* data.json */,
-				6F8B11971FF0EF870032E1EB /* map.txt */,
 				6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */,
 				6F6F879D1FE7BA33005A0DBC /* CleanController.swift */,
 				6F6F87B31FE8BDE4005A0DBC /* RotaMapView.swift */,
@@ -147,8 +141,6 @@
 				EF37A8891FE9205100CF4BBF /* data.plist in Resources */,
 				6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */,
 				6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */,
-				6F8B11981FF0EF870032E1EB /* map.txt in Resources */,
-				6F6F87B01FE7D2E8005A0DBC /* data.json in Resources */,
 				6F6F87A11FE7BA33005A0DBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

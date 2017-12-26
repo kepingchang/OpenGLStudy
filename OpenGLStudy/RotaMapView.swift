@@ -31,7 +31,7 @@ class RotaMapView: UIView {
         for i in 0..<height {
             for j in 0..<width {
                 if dataArr[i*width + j].intValue > 0 && dataArr[i*width + j].intValue <= 70 {
-                    CGContext.addRect(context!)(CGRect(x: j, y: i, width: 1, height: 1))
+                    CGContext.addRect(context!)(CGRect(x: j, y: height - i, width: 1, height: 1))
                 }
             }
         }
@@ -64,7 +64,7 @@ class RotaHinderView: UIView {
         for i in 0..<height {
             for j in 0..<width {
                 if dataArr[i*width + j].intValue > 70 {
-                    CGContext.addRect(context!)(CGRect(x: j, y: i, width: 1, height: 1))
+                    CGContext.addRect(context!)(CGRect(x: j, y: height - i, width: 1, height: 1))
                 }
             }
         }
@@ -103,6 +103,8 @@ class RotaTraceView: UIView {
         
         let startx = -positionX
         let starty = -positionY
+        
+        print("startx = \(startx) \n starty = \(starty)")
         
         bezier.move(to: CGPoint(x: startx, y: starty))
         
