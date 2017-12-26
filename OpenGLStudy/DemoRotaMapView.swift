@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RotaMapView: UIView {
+class DemoRotaMapView: UIView {
     
     var dataArr = Array<JSON>()
     
@@ -30,7 +30,7 @@ class RotaMapView: UIView {
         
         for i in 0..<height {
             for j in 0..<width {
-                if dataArr[i*width + j].intValue > 0 && dataArr[i*width + j].intValue <= 70 {
+                if dataArr[i*width + j].intValue > 0 {//&& dataArr[i*width + j].intValue <= 70 
                     CGContext.addRect(context!)(CGRect(x: j, y: height - i, width: 1, height: 1))
                 }
             }
@@ -41,7 +41,7 @@ class RotaMapView: UIView {
 }
 
 
-class RotaHinderView: UIView {
+class DemoRotaHinderView: UIView {
     
     var dataArr = Array<JSON>()
     
@@ -75,7 +75,7 @@ class RotaHinderView: UIView {
 
 
 
-class RotaTraceView: UIView {
+class DemoRotaTraceView: UIView {
     
     var dataArr = Array<JSON>()
     

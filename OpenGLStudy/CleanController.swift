@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CleanController: UIViewController {
+class DemoCleanController: UIViewController {
     
-    var mapView = RotaMapView()
-    var hinderView = RotaHinderView()
-    var traceView = RotaTraceView()
+    var mapView = DemoRotaMapView()
+    var hinderView = DemoRotaHinderView()
+    var traceView = DemoRotaTraceView()
     
     
-    var drawnum = 10
+    var drawnum = 0
     
     var json = JSON()
     var timer = Timer()
@@ -26,20 +26,20 @@ class CleanController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(mapView)
-        view.addSubview(hinderView)
+//        view.addSubview(hinderView)
         view.addSubview(traceView)
         
-//        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
-//            if self.drawnum < self.json.count {
-//                self.drawMap(drawnum: self.drawnum)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+            if self.drawnum < self.json.count {
+                self.drawMap(drawnum: self.drawnum)
 //                self.drawHinder(drawnum: self.drawnum)
-//                self.drawTrace(drawnum: self.drawnum)
-//                self.drawnum += 1
-//            }else {
-//                self.drawnum = 10
-//            }
-//        })
-//        self.timer.fire()
+                self.drawTrace(drawnum: self.drawnum)
+                self.drawnum += 1
+            }else {
+                self.drawnum = 0
+            }
+        })
+        self.timer.fire()
         
         
         let fileName = Bundle.main.path(forResource: "mapTwo", ofType: "plist")
@@ -60,7 +60,7 @@ class CleanController: UIViewController {
         let width = json[drawnum]["Map"]["Info"]["Width"]
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
-        if drawnum == 10 {
+        if drawnum == 0 {
             mapView.center = view.center
             mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
@@ -87,7 +87,7 @@ class CleanController: UIViewController {
         let width = json[drawnum]["Map"]["Info"]["Width"]
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
-        if drawnum == 10 {
+        if drawnum == 0 {
             hinderView.center = view.center
             hinderView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
@@ -111,7 +111,7 @@ class CleanController: UIViewController {
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
         
-        if drawnum == 10 {
+        if drawnum == 0 {
             traceView.center = view.center
             traceView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
@@ -128,14 +128,14 @@ class CleanController: UIViewController {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if drawnum < json.count {
-            drawMap(drawnum: drawnum)
-            drawHinder(drawnum: drawnum)
-            drawTrace(drawnum: drawnum)
-            drawnum += 1
-        }else {
-            drawnum = 10
-        }
+//        if drawnum < json.count {
+//            drawMap(drawnum: drawnum)
+////            drawHinder(drawnum: drawnum)
+//            drawTrace(drawnum: drawnum)
+//            drawnum += 1
+//        }else {
+//            drawnum = 0
+//        }
     }
     
 }
