@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2178421FF2500500F1CD86 /* DemoRotaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2178401FF2500500F1CD86 /* DemoRotaMapView.swift */; };
+		6F2178431FF2500500F1CD86 /* DemoCleanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2178411FF2500500F1CD86 /* DemoCleanController.swift */; };
 		6F6F879C1FE7BA33005A0DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */; };
-		6F6F879E1FE7BA33005A0DBC /* DemoCleanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F879D1FE7BA33005A0DBC /* DemoCleanController.swift */; };
 		6F6F87A11FE7BA33005A0DBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F879F1FE7BA33005A0DBC /* Main.storyboard */; };
 		6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */; };
 		6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F87A41FE7BA33005A0DBC /* LaunchScreen.storyboard */; };
 		6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */; };
 		6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */; };
-		6F6F87B41FE8BDE4005A0DBC /* DemoRotaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F87B31FE8BDE4005A0DBC /* DemoRotaMapView.swift */; };
 		6F8B11961FF0CD4A0032E1EB /* UIColor+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */; };
-		6FBB1F811FF1FBA900F55778 /* mapTwo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FBB1F801FF1FBA900F55778 /* mapTwo.plist */; };
+		6FDB9ED51FF1F5AF003C275C /* mapTwo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB9ED41FF1F5AF003C275C /* mapTwo.plist */; };
 		EF37A8891FE9205100CF4BBF /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF37A8881FE9205100CF4BBF /* data.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F2178401FF2500500F1CD86 /* DemoRotaMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoRotaMapView.swift; sourceTree = "<group>"; };
+		6F2178411FF2500500F1CD86 /* DemoCleanController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCleanController.swift; sourceTree = "<group>"; };
 		6F6F87981FE7BA33005A0DBC /* OpenGLStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6F6F879D1FE7BA33005A0DBC /* DemoCleanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCleanController.swift; sourceTree = "<group>"; };
 		6F6F87A01FE7BA33005A0DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6F87A51FE7BA33005A0DBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F6F87A71FE7BA33005A0DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
 		6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		6F6F87B31FE8BDE4005A0DBC /* DemoRotaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRotaMapView.swift; sourceTree = "<group>"; };
 		6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hexa.swift"; sourceTree = "<group>"; };
-		6FBB1F801FF1FBA900F55778 /* mapTwo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapTwo.plist; sourceTree = "<group>"; };
+		6FDB9ED41FF1F5AF003C275C /* mapTwo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapTwo.plist; sourceTree = "<group>"; };
 		EF37A8881FE9205100CF4BBF /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,10 +69,10 @@
 				6F6F87B11FE7DEC2005A0DBC /* SwiftyJSON.swift */,
 				6F8B11951FF0CD4A0032E1EB /* UIColor+hexa.swift */,
 				EF37A8881FE9205100CF4BBF /* data.plist */,
-				6FBB1F801FF1FBA900F55778 /* mapTwo.plist */,
+				6FDB9ED41FF1F5AF003C275C /* mapTwo.plist */,
 				6F6F879B1FE7BA33005A0DBC /* AppDelegate.swift */,
-				6F6F879D1FE7BA33005A0DBC /* DemoCleanController.swift */,
-				6F6F87B31FE8BDE4005A0DBC /* DemoRotaMapView.swift */,
+				6F2178411FF2500500F1CD86 /* DemoCleanController.swift */,
+				6F2178401FF2500500F1CD86 /* DemoRotaMapView.swift */,
 				6F6F87AD1FE7BB22005A0DBC /* GLViewController.swift */,
 				6F6F879F1FE7BA33005A0DBC /* Main.storyboard */,
 				6F6F87A21FE7BA33005A0DBC /* Assets.xcassets */,
@@ -141,7 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FBB1F811FF1FBA900F55778 /* mapTwo.plist in Resources */,
+				6FDB9ED51FF1F5AF003C275C /* mapTwo.plist in Resources */,
 				EF37A8891FE9205100CF4BBF /* data.plist in Resources */,
 				6F6F87A61FE7BA33005A0DBC /* LaunchScreen.storyboard in Resources */,
 				6F6F87A31FE7BA33005A0DBC /* Assets.xcassets in Resources */,
@@ -156,12 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F2178431FF2500500F1CD86 /* DemoCleanController.swift in Sources */,
 				6F6F87AE1FE7BB22005A0DBC /* GLViewController.swift in Sources */,
-				6F6F879E1FE7BA33005A0DBC /* DemoCleanController.swift in Sources */,
-				6F6F87B41FE8BDE4005A0DBC /* DemoRotaMapView.swift in Sources */,
 				6F8B11961FF0CD4A0032E1EB /* UIColor+hexa.swift in Sources */,
 				6F6F879C1FE7BA33005A0DBC /* AppDelegate.swift in Sources */,
 				6F6F87B21FE7DEC2005A0DBC /* SwiftyJSON.swift in Sources */,
+				6F2178421FF2500500F1CD86 /* DemoRotaMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,12 +299,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35FZ4X5X4K;
 				INFOPLIST_FILE = OpenGLStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = a.OpenGLStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -313,12 +315,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 35FZ4X5X4K;
 				INFOPLIST_FILE = OpenGLStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = a.OpenGLStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

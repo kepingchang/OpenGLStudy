@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import SwiftyJSON
 
 class DemoCleanController: UIViewController {
     
@@ -21,38 +22,47 @@ class DemoCleanController: UIViewController {
     var timer = Timer()
 
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .black
         
         view.addSubview(mapView)
 //        view.addSubview(hinderView)
         view.addSubview(traceView)
         
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
-            if self.drawnum < self.json.count {
-                self.drawMap(drawnum: self.drawnum)
-//                self.drawHinder(drawnum: self.drawnum)
-                self.drawTrace(drawnum: self.drawnum)
-                self.drawnum += 1
-            }else {
-                self.drawnum = 0
+        
+        
+
+//        HexaLoading.show(in: view, title: "数据处理中...")
+        DispatchQueue.global().async {
+            let fileName = Bundle.main.path(forResource: "mapTwo", ofType: "plist")
+            let dataArr = NSArray(contentsOfFile: fileName!) as! [[String: Any]]
+            
+            do {
+                let data = try JSONSerialization.data(withJSONObject: dataArr, options: .prettyPrinted)
+                self.json = try JSON(data: data)
+            }catch let error {
+                print(error)
+//                HexaHUD.show(with: "数据处理失败")
             }
-        })
-        self.timer.fire()
-        
-        
-        let fileName = Bundle.main.path(forResource: "mapTwo", ofType: "plist")
-        let dataArr = NSArray(contentsOfFile: fileName!) as! [[String: Any]]
-        
-        do {
-            
-            let data = try JSONSerialization.data(withJSONObject: dataArr, options: .prettyPrinted)
-            json = JSON(data: data)
-            
-        }catch let error {
-            print(error)
         }
+        
+        if #available(iOS 10.0, *) {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+                if self.drawnum < self.json.count {
+                    self.drawMap(drawnum: self.drawnum)
+                    //                self.drawHinder(drawnum: self.drawnum)
+                    self.drawTrace(drawnum: self.drawnum)
+                    self.drawnum += 1
+                }else {
+                    self.drawnum = 0
+                }
+            })
+        } else {
+            // Fallback on earlier versions
+        }
+        self.timer.fire()
     }
     
     private func drawMap(drawnum: Int) {
@@ -61,7 +71,9 @@ class DemoCleanController: UIViewController {
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
         if drawnum == 0 {
-            mapView.center = view.center
+//            HexaLoading.hide(in: view)
+//            HexaHUD.show(with: "数据处理完成，开始绘图...")
+            mapView.center = CGPoint(x: view.center.x, y: view.center.y-20)
             mapView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
             mapView.frame = CGRect(x: mapView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: mapView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
@@ -88,7 +100,7 @@ class DemoCleanController: UIViewController {
         let height = json[drawnum]["Map"]["Info"]["Height"]
         
         if drawnum == 0 {
-            hinderView.center = view.center
+            hinderView.center = CGPoint(x: view.center.x, y: view.center.y-20)
             hinderView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
             hinderView.frame = CGRect(x: hinderView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: hinderView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
@@ -112,7 +124,7 @@ class DemoCleanController: UIViewController {
         
         
         if drawnum == 0 {
-            traceView.center = view.center
+            traceView.center = CGPoint(x: view.center.x, y: view.center.y-20)
             traceView.bounds = CGRect(x: 0, y: 0, width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
         }else {
             traceView.frame = CGRect(x: traceView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: traceView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: CGFloat(width.floatValue), height: CGFloat(height.floatValue))
