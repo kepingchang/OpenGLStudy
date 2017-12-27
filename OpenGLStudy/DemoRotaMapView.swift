@@ -7,8 +7,6 @@
 //
 
 import UIKit
-//import SwiftyJSON
-
 
 class DemoRotaMapView: UIView {
     
@@ -104,7 +102,7 @@ class DemoRotaTraceView: UIView {
         
         
         let startx = -positionX
-        let starty = -positionY
+        let starty = positionY
         
         print("startx = \(startx) \n starty = \(starty)")
         
@@ -114,7 +112,7 @@ class DemoRotaTraceView: UIView {
         
         for i in 0..<dataArr.count-1 {
             if i != 0 {
-                bezier.addLine(to: CGPoint(x: startx + 20*CGFloat(dataArr[i]["X"].floatValue), y: starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))
+                bezier.addLine(to: CGPoint(x: CGFloat(Int64(startx + 20*CGFloat(dataArr[i]["X"].floatValue))), y: CGFloat(Int64(starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))))
                 
                 print(CGPoint(x: startx + 20*CGFloat(dataArr[i]["X"].floatValue), y: starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))
             }
@@ -128,7 +126,7 @@ class DemoRotaTraceView: UIView {
         
         
         UIColor(hexString: "#66c5fo").setStroke()
-        CGContext.setLineWidth(context!)(2)
+        CGContext.setLineWidth(context!)(1)
         CGContext.addPath(context!)(bezier.cgPath)
         CGContext.drawPath(context!)(using: .stroke)
 

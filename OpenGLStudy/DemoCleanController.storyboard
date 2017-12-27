@@ -74,16 +74,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-MP-Vsu">
-                                <rect key="frame" x="147.5" y="557" width="80" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="fHV-bA-HLf"/>
-                                    <constraint firstAttribute="height" constant="90" id="kxK-hZ-rsp"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="beginDraw:" destination="FTJ-oZ-54b" eventType="touchUpInside" id="fkG-Qw-sYB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -92,10 +82,8 @@
                             <constraint firstItem="dMS-zI-VY5" firstAttribute="leading" secondItem="egS-Ul-UOy" secondAttribute="leading" id="6RJ-jT-ljQ"/>
                             <constraint firstItem="kbo-BJ-kEQ" firstAttribute="top" secondItem="rgE-OT-Y3m" secondAttribute="top" constant="80" id="DOq-aS-LHR"/>
                             <constraint firstItem="egS-Ul-UOy" firstAttribute="trailing" secondItem="dMS-zI-VY5" secondAttribute="trailing" id="KqX-cc-I8g"/>
-                            <constraint firstItem="aQp-MP-Vsu" firstAttribute="centerX" secondItem="rgE-OT-Y3m" secondAttribute="centerX" id="aFG-n9-Uhd"/>
                             <constraint firstItem="egS-Ul-UOy" firstAttribute="trailing" secondItem="kbo-BJ-kEQ" secondAttribute="trailing" constant="20" id="etY-42-dfg"/>
                             <constraint firstAttribute="bottom" secondItem="kbo-BJ-kEQ" secondAttribute="bottom" constant="125" id="kcq-VY-sJd"/>
-                            <constraint firstItem="egS-Ul-UOy" firstAttribute="bottom" secondItem="aQp-MP-Vsu" secondAttribute="bottom" constant="20" id="kwT-0A-IG1"/>
                             <constraint firstItem="dMS-zI-VY5" firstAttribute="top" secondItem="rgE-OT-Y3m" secondAttribute="top" id="pmE-Nf-PwV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="egS-Ul-UOy"/>

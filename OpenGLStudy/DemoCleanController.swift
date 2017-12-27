@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import SwiftyJSON
 
 class DemoCleanController: UIViewController {
     
@@ -132,7 +131,7 @@ class DemoCleanController: UIViewController {
         
         traceView.dataArr = json[drawnum]["Trace"].arrayValue
         traceView.positionX = 20*CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)
-        traceView.positionY = 20*CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)
+        traceView.positionY = CGFloat(json[drawnum]["Map"]["Info"]["Height"].floatValue) + 20*CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)
         
         traceView.setNeedsDisplay()
     }
@@ -150,5 +149,9 @@ class DemoCleanController: UIViewController {
 //        }
     }
     
+    
+    @IBAction func beginDraw(_ sender: Any) {
+
+    }
 }
 
