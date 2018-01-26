@@ -10,9 +10,10 @@ import UIKit
 
 class DemoRotaMapView: UIImageView {
     
-    func changeShape(dataArr: Array<JSON>){
-        let width = Int(bounds.width)
-        let height = Int(bounds.height)
+    func changeShape(dataArr: Array<JSON>, rect: CGRect){
+        
+        let width = Int(rect.width)
+        let height = Int(rect.height)
         
         // 位图的大小 ＝ 图片宽 ＊ 图片高 ＊ 图片中每点包含的信息量
         let imgByteCount = width * height * 4
@@ -28,16 +29,15 @@ class DemoRotaMapView: UIImageView {
         
         for i in 0..<height {
             for j in 0..<width {
-                /// .///
                 let offset = ((height - i - 1)*width + j)*4
                 let pointee = dataArr[i*width + j].intValue
                 if pointee > 0 && pointee <= 70 {
-                    (shapeData+offset).pointee = 1
+                    (shapeData+offset).pointee = 255
                     (shapeData+offset+1).pointee = CUnsignedChar(16)
                     (shapeData+offset+2).pointee = CUnsignedChar(213)
                     (shapeData+offset+3).pointee = CUnsignedChar(161)
                 }else if pointee > 70 {
-                    (shapeData+offset).pointee = 1
+                    (shapeData+offset).pointee = 255
                     (shapeData+offset+1).pointee = CUnsignedChar(96)
                     (shapeData+offset+2).pointee = CUnsignedChar(219)
                     (shapeData+offset+3).pointee = CUnsignedChar(181)
@@ -56,13 +56,17 @@ class DemoRotaMapView: UIImageView {
         
         let outImage = imgContext?.makeImage()
         
-        // 根据图形上下文绘图
-        let img = UIImage(cgImage: outImage!)
         
-        self.image = img
+        // 绘制图片
+        DispatchQueue.main.async {
+            // 设置frame
+            self.frame = rect
+            self.image = UIImage(cgImage: outImage!)
+        }
         
-        
-        
+        //        DLog(img.size)
+        //        DLog(frame)
+        //        DLog("📌📌📌📌📌📌📌📌📌")
     }
     
     
