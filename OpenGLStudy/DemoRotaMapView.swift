@@ -8,9 +8,64 @@
 
 import UIKit
 
-class DemoRotaMapView: UIView {
+class DemoRotaMapView: UIImageView {
     
-    var dataArr = Array<JSON>()
+    func changeShape(dataArr: Array<JSON>){
+        let width = Int(bounds.width)
+        let height = Int(bounds.height)
+        
+        // 位图的大小 ＝ 图片宽 ＊ 图片高 ＊ 图片中每点包含的信息量
+        let imgByteCount = width * height * 4
+        
+        // 使用系统的颜色空间
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        // 计算总大小,申请内存空间
+        let shapeByteCount = width * height * 4
+        let shapeVoideData = malloc(shapeByteCount)
+        defer {free(shapeVoideData)}
+        let shapeData = unsafeBitCast(shapeVoideData, to: UnsafeMutablePointer<CUnsignedChar>.self)
+        
+        for i in 0..<height {
+            for j in 0..<width {
+                /// .///
+                let offset = ((height - i - 1)*width + j)*4
+                let pointee = dataArr[i*width + j].intValue
+                if pointee > 0 && pointee <= 70 {
+                    (shapeData+offset).pointee = 1
+                    (shapeData+offset+1).pointee = CUnsignedChar(16)
+                    (shapeData+offset+2).pointee = CUnsignedChar(213)
+                    (shapeData+offset+3).pointee = CUnsignedChar(161)
+                }else if pointee > 70 {
+                    (shapeData+offset).pointee = 1
+                    (shapeData+offset+1).pointee = CUnsignedChar(96)
+                    (shapeData+offset+2).pointee = CUnsignedChar(219)
+                    (shapeData+offset+3).pointee = CUnsignedChar(181)
+                }
+            }
+        }
+        
+        // 创建位图
+        let imgContext = CGContext(data: shapeData,
+                                   width: width,
+                                   height: height,
+                                   bitsPerComponent: 8,
+                                   bytesPerRow: width * 4,
+                                   space: colorSpace,
+                                   bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+        
+        let outImage = imgContext?.makeImage()
+        
+        // 根据图形上下文绘图
+        let img = UIImage(cgImage: outImage!)
+        
+        self.image = img
+        
+        
+        
+    }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,58 +76,7 @@ class DemoRotaMapView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        
-        let width = Int(bounds.width)
-        let height = Int(bounds.height)
-        
-        for i in 0..<height {
-            for j in 0..<width {
-                if dataArr[i*width + j].intValue > 0 {//&& dataArr[i*width + j].intValue <= 70 
-                    CGContext.addRect(context!)(CGRect(x: j, y: height - i, width: 1, height: 1))
-                }
-            }
-        }
-        context!.setStrokeColor(UIColor(hexString: "#10d5a1").withAlphaComponent(0.4).cgColor)
-        CGContext.strokePath(context!)()
-    }
 }
-
-
-class DemoRotaHinderView: UIView {
-    
-    var dataArr = Array<JSON>()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .clear
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        
-        let width = Int(bounds.width)
-        let height = Int(bounds.height)
-        
-        for i in 0..<height {
-            for j in 0..<width {
-                if dataArr[i*width + j].intValue > 70 {
-                    CGContext.addRect(context!)(CGRect(x: j, y: height - i, width: 1, height: 1))
-                }
-            }
-        }
-        context!.setStrokeColor(UIColor(hexString: "#60dbb5").cgColor)
-        CGContext.strokePath(context!)()
-    }
-}
-
 
 
 class DemoRotaTraceView: UIView {
@@ -104,32 +108,26 @@ class DemoRotaTraceView: UIView {
         let startx = -positionX
         let starty = positionY
         
-        print("startx = \(startx) \n starty = \(starty)")
-        
         bezier.move(to: CGPoint(x: startx, y: starty))
-        
-        print(CGPoint(x: startx, y: starty))
         
         for i in 0..<dataArr.count-1 {
             if i != 0 {
                 bezier.addLine(to: CGPoint(x: CGFloat(Int64(startx + 20*CGFloat(dataArr[i]["X"].floatValue))), y: CGFloat(Int64(starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))))
-                
-                print(CGPoint(x: startx + 20*CGFloat(dataArr[i]["X"].floatValue), y: starty - 20*CGFloat(dataArr[i]["Y"].floatValue)))
             }
         }
-
+        
         // 绘制曲线
-//        print("\(firstPoint)\(secondPoint)")
-//
-//        bezier.move(to: firstPoint)
-//        bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
+        //        DLog("\(firstPoint)\(secondPoint)")
+        //
+        //        bezier.move(to: firstPoint)
+        //        bezier.addCurve(to: secondPoint, controlPoint1: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: firstPoint.y), controlPoint2: CGPoint(x: (secondPoint.x-firstPoint.x)/2+firstPoint.x, y: secondPoint.y))
         
         
         UIColor(hexString: "#66c5fo").setStroke()
         CGContext.setLineWidth(context!)(1)
         CGContext.addPath(context!)(bezier.cgPath)
         CGContext.drawPath(context!)(using: .stroke)
-
+        
     }
     
 }
