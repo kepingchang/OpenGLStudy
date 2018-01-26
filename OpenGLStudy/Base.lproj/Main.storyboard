@@ -13,7 +13,7 @@
         <!--Demo Clean Controller-->
         <scene sceneID="ogC-vo-kLh">
             <objects>
-                <viewController id="KLY-sm-46l" customClass="DemoCleanController" customModule="rota" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KLY-sm-46l" customClass="DemoCleanController" customModule="OpenGLStudy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p1A-xk-I0k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAd-Al-aP1">
                                 <rect key="frame" x="20" y="80" width="335" height="462"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rota正在清扫..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbj-wR-pPy">
-                                        <rect key="frame" x="121.5" y="9" width="92" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="什么都别干，等着就行..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbj-wR-pPy">
+                                        <rect key="frame" x="95.5" y="9" width="144" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.24313725489999999" green="0.25490196079999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,26 +74,14 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-9L-eD3">
-                                <rect key="frame" x="147.5" y="557" width="80" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="dsW-Ev-X3l"/>
-                                    <constraint firstAttribute="height" constant="90" id="hN8-p7-FBu"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="beginDraw:" destination="KLY-sm-46l" eventType="touchUpInside" id="9P0-wY-iSN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vAd-Al-aP1" firstAttribute="top" secondItem="p1A-xk-I0k" secondAttribute="top" constant="80" id="0B1-m1-SaX"/>
                             <constraint firstItem="zzv-8w-Mhf" firstAttribute="trailing" secondItem="5NV-kp-Xt4" secondAttribute="trailing" id="2nC-fF-4MG"/>
                             <constraint firstItem="vAd-Al-aP1" firstAttribute="leading" secondItem="zzv-8w-Mhf" secondAttribute="leading" constant="20" id="9bm-vN-LzQ"/>
-                            <constraint firstItem="zzv-8w-Mhf" firstAttribute="bottom" secondItem="AWh-9L-eD3" secondAttribute="bottom" constant="20" id="AAt-Ws-ybR"/>
                             <constraint firstItem="zzv-8w-Mhf" firstAttribute="bottom" secondItem="5NV-kp-Xt4" secondAttribute="bottom" id="QeL-PU-yIA"/>
                             <constraint firstItem="5NV-kp-Xt4" firstAttribute="top" secondItem="p1A-xk-I0k" secondAttribute="top" id="R7b-Qs-bkU"/>
-                            <constraint firstItem="AWh-9L-eD3" firstAttribute="centerX" secondItem="p1A-xk-I0k" secondAttribute="centerX" id="R9Q-xl-pZk"/>
                             <constraint firstAttribute="bottom" secondItem="vAd-Al-aP1" secondAttribute="bottom" constant="125" id="fsi-a4-gjw"/>
                             <constraint firstItem="5NV-kp-Xt4" firstAttribute="leading" secondItem="zzv-8w-Mhf" secondAttribute="leading" id="mUW-Ok-j5i"/>
                             <constraint firstItem="zzv-8w-Mhf" firstAttribute="trailing" secondItem="vAd-Al-aP1" secondAttribute="trailing" constant="20" id="toa-Ot-WYu"/>
