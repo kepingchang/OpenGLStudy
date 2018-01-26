@@ -22,7 +22,7 @@ class DemoCleanController: UIViewController {
     
     //捏合手势
     @objc func pinchDid(pinch:UIPinchGestureRecognizer) {
-        DLog(pinch.scale)//打印捏合比例
+//        DLog(pinch.scale)//打印捏合比例
     }
     
     
@@ -47,7 +47,7 @@ class DemoCleanController: UIViewController {
                 let data = try JSONSerialization.data(withJSONObject: dataArr, options: .prettyPrinted)
                 self.json = try JSON(data: data)
             }catch let error {
-                DLog(error)
+//                DLog(error)
 //                HexaHUD.show(with: "数据处理失败")
             }
         }
@@ -78,7 +78,7 @@ class DemoCleanController: UIViewController {
         if drawnum == 0 {
 //            HexaLoading.hide(in: view)
 //            HexaHUD.show(with: "数据处理完成，开始绘图...")
-            rect = CGRect(x: (Screen.width - width)/2, y: view.center.y - height/2 - 20, width: width, height: height)
+            rect = CGRect(x: (UIScreen.main.bounds.width - width)/2, y: view.center.y - height/2 - 20, width: width, height: height)
         }else {
             rect = CGRect(x: mapView.frame.origin.x + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["X"].floatValue)), y: mapView.frame.origin.y + 20*(CGFloat(json[drawnum]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue) - CGFloat(json[drawnum-1]["Map"]["Info"]["Origin"]["Position"]["Y"].floatValue)), width: width, height: height)
         }
